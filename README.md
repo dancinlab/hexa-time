@@ -1,4 +1,4 @@
-# hexa-time — n=6 time substrate (HEXA family)
+# ⏰ hexa-time — n=6 time substrate (HEXA family)
 
 > 3-verb time substrate organized around the **n=6 invariant lattice**:
 > HOROLOGY / CLOCKWORK / CALENDAR. Spec-first extraction from
