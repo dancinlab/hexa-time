@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/infra/calendar-time-geography/calendar-time-geography.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: 0d101738715d25b0c5e701ed5bf9a980 -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: calendar-time-geography
