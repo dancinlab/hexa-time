@@ -1,0 +1,56 @@
+# .roadmap.hexa_time — repo-overall tracker
+
+> Cross-cutting state: invariant lattice, release cadence, cycle history,
+> deadlines, pointers. Self-contained sister under `need-singularity` org.
+
+**Last sync**: 2026-05-06 · **Current release**: v1.0.0 · **Branch**: `main`
+
+---
+
+## §0 Terminal goal — n=6 시간 substrate 통합
+
+hexa-time 도착지 = **escapement(τ=4 phase) + bell ratio + calendar 6-cycle 모두 working CLI .hexa**.
+
+DoD:
+1. `horology` escapement τ=4 phase 시뮬레이터 .hexa.
+2. `clockwork` bell ratio σ:τ 자동 검증 .hexa.
+3. `calendar` 6-cycle Hangul·Western·Lunar 통합 표시 .hexa.
+
+## §A.1 Invariant lattice (n=6)
+
+```
+σ(6) · φ(6) = n · τ(6) = J₂ = 24
+   12   ·   2  =  6  ·   4  = 24
+```
+
+| Symbol | Value | Role | Time projection |
+|--------|-------|------|-----------------|
+| σ(6)   | 12    | sigma — cardinality bin | 12-hour clock face / 12 zodiac / 12 bell harmonic |
+| τ(6)   | 4     | tau — state quartet | 4 escapement phases (impulse / drop / lift / lock) |
+| φ(6)   | 2     | phi — verdict bit | AM / PM (or solar / lunar) |
+| J₂     | 24    | Mathieu / Leech | 24-hour day = σ·φ |
+
+## §A.2 Release cadence
+
+| Version | Date | Status | Highlights |
+|---------|------|--------|------------|
+| v1.0.0 | 2026-05-06 | RELEASED | 3 verb 시드 (horology + clockwork + calendar) |
+| v1.1.0 | ~2026-08 (TARGET) | planned | `horology` escapement τ=4 phase 시뮬레이터 .hexa |
+| v1.2.0 | ~2026-10 | planned | `clockwork` bell ratio σ:τ 자동 검증 |
+| v2.0.0 | ~2026-12 | ASPIRATIONAL | `calendar` 6-cycle Hangul·Western·Lunar 통합 표시 |
+
+## §A.3 Cycle history
+
+- **Cycle 0 (2026-05-06)** — v1.0.0 initial extraction from n6-architecture@c0f1f570. Commit `e332087`. 11 files / 2009 insertions.
+
+## §A.4 Falsifier preregister
+
+- **F-TIME-1** — τ=4 escapement phase 실제 mechanical clock (Patek/Rolex/Seiko) 측정 일치?
+- **F-TIME-2** — bell ratio σ(6)=12 harmonic 음 1:2:3:4:6:12 측정 (church bell spectrum)?
+- **F-TIME-3** — calendar 6-cycle (Lunar 354/Solar 365) reconciliation, n=6 closed-form fit?
+
+## §A.5 Pending decisions
+
+- escapement 시뮬레이터 visualization 형식 (.hexa 텍스트 vs SVG export).
+- bell ratio 측정 방법 (FFT analysis 외부 audio data).
+- calendar 통합 우선순위 (Hangul 24절기 vs Lunar vs Western).
