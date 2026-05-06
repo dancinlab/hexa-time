@@ -1,0 +1,302 @@
+#!hexa strict
+// hexa-time/cli/hexa-time.hexa — standalone hexa-time CLI router (placeholder)
+//
+// 3-verb n=6 time substrate (HEXA family) router:
+//   horology   — escapement / oscillator phase canonics (τ(6)=4)  [SPEC]
+//   clockwork  — bell ratio / harmonic canonics                   [SPEC]
+//   calendar   — calendar 6-cycle / time-geography                [SPEC]
+//
+// Plus utility subcmds:
+//   status      — verb status table (0/3 wired, 3/3 spec)
+//   selftest    — sentinel sweep (verify 3 verb spec files present)
+//   help        — this help
+//   --version   — print version
+//
+// Status: spec-first placeholder. v1.0.0 ships specs only — full working
+// CLI verbs (escapement simulator, bell-ratio audit, calendar generator)
+// are TBD post-v1.0.
+//
+// Root resolution: $HEXA_TIME_ROOT env, else inferred from $0 dirname.
+//
+// Constraints:
+//   raw#9   — hexa-only orchestration
+//   raw#15  — write-confined (audit log only)
+//   raw#10  — honest C3 caveats embedded
+//
+// Cost: $0 (Mac local; spec read + sentinel print).
+//
+// @no-lock-needed
+// @resolver-bypass(reason="Pure local CLI router; spec substrate.")
+
+let VERSION = "1.0.0"
+
+// ─── env / path resolve ───
+
+let HOME = env("HOME")
+let HEXA_TIME_ROOT_ENV = env("HEXA_TIME_ROOT")
+
+fn hexa_time_root() -> str {
+    if HEXA_TIME_ROOT_ENV.len() > 0 { return HEXA_TIME_ROOT_ENV }
+    let inferred = exec("dirname \"$(dirname \"$0\")\" 2>/dev/null || true").trim()
+    if inferred.len() > 0 { return inferred }
+    return HOME + "/.hexa-time"  // @allow-devpath
+}
+
+let HT = hexa_time_root()
+
+let SPEC_HOROLOGY  = HT + "/horology/horology.md"
+let SPEC_CLOCKWORK = HT + "/clockwork/bell-clockwork.md"
+let SPEC_CALENDAR  = HT + "/calendar/calendar-time-geography.md"
+
+let LOG_PATH = HT + "/state/hexa_time_cli.log"
+
+// ─── arg helpers ───
+
+fn shq(s: str) -> str {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn has_flag(a: [str], flag: str) -> bool {
+    for x in a {
+        if x == flag { return true }
+    }
+    return false
+}
+
+fn json_mode(a: [str]) -> bool {
+    return has_flag(a, "--json")
+}
+
+// ─── audit log (jsonl) ───
+
+fn _ts_now() -> str {
+    return exec("date -u '+%Y-%m-%dT%H:%M:%SZ'").trim()
+}
+
+fn _audit(subcmd: str, args_str: str, exit_code: int) {
+    let line = "{\"ts\":\"" + _ts_now() + "\",\"caller\":\"hexa_time_standalone\",\"subcmd\":\"hexa-time " +
+               subcmd + "\",\"args\":\"" + args_str.replace("\"", "\\\"") +
+               "\",\"exit_code\":" + str(exit_code) + ",\"version\":\"" + VERSION + "\"}"
+    exec("mkdir -p " + shq(HT + "/state") + " 2>/dev/null")
+    exec("echo " + shq(line) + " >> " + shq(LOG_PATH) + " 2>/dev/null")
+}
+
+// ─── spec presence check ───
+
+fn _file_exists(p: str) -> bool {
+    let r = exec("[ -f " + shq(p) + " ] && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+// ─── caveat printer (raw#10 honest C3) ───
+
+fn _print_caveats() {
+    println("")
+    println("--- caveats (raw#10 C3) ---")
+    println("  1. 0/3 verbs empirically wired. v1.0.0 ships SPEC documents only;")
+    println("     working .hexa simulators (escapement / bell-ratio / calendar")
+    println("     generator) are TBD post-v1.0.")
+    println("  2. n=6 invariant (σ=12, τ=4, φ=2, J₂=24) inherited from")
+    println("     n6-architecture@c0f1f570; verb-specific empirical audits deferred.")
+    println("  3. Spec content is verbatim extraction from n6-architecture domains/")
+    println("     (horology + bell-clockwork + calendar-time-geography) — no")
+    println("     normative changes applied during extraction.")
+}
+
+// ─── subcommand: status ───
+
+fn cmd_status(a: [str]) {
+    if json_mode(a) {
+        let mut js = "{\"hexa_time\":\"" + VERSION + "\",\"subcmd\":\"status\","
+        js = js + "\"verbs_total\":3,\"verbs_wired\":0,\"verbs_spec\":3,"
+        js = js + "\"verdict\":\"SPEC_FIRST\","
+        js = js + "\"verbs\":[\"horology:spec\",\"clockwork:spec\",\"calendar:spec\"],"
+        js = js + "\"n6_lattice\":\"inherited_from_n6_architecture\""
+        js = js + "}"
+        println(js)
+        return
+    }
+
+    println("hexa-time " + VERSION + " status — 3-verb n=6 time substrate (HEXA family)")
+    println("")
+    println("  verb        status              n=6 lattice              spec file")
+    println("  ----------- ------------------- ------------------------ ---------------------------------")
+    println("  horology    SPEC v1.0.0         τ(6)=4 phase             horology/horology.md")
+    println("  clockwork   SPEC v1.0.0         bell ratio canonics      clockwork/bell-clockwork.md")
+    println("  calendar    SPEC v1.0.0         6-cycle geometry         calendar/calendar-time-geography.md")
+    println("")
+    println("  verdict: SPEC_FIRST (0/3 verbs wired; 3/3 specs imported verbatim)")
+    println("")
+    println("  to drill into a verb (prints spec head):")
+    println("    hexa-time horology")
+    println("    hexa-time clockwork")
+    println("    hexa-time calendar")
+    println("    hexa-time selftest      (3-verb sentinel sweep)")
+    _print_caveats()
+}
+
+// ─── subcommand: verb head printer ───
+
+fn _verb_head(label: str, spec: str) {
+    if _file_exists(spec) == false {
+        println("ERROR: spec missing: " + spec + " (set HEXA_TIME_ROOT or run from repo root)")
+        return
+    }
+    println("=== hexa-time " + label + " — spec head (first 40 lines) ===")
+    let raw = exec("head -n 40 " + shq(spec) + " 2>&1")
+    println(raw.trim())
+    println("")
+    println("(full spec: " + spec + ")")
+}
+
+fn cmd_horology(a: [str]) {
+    _verb_head("horology", SPEC_HOROLOGY)
+    if json_mode(a) {
+        let pass = if _file_exists(SPEC_HOROLOGY) { "true" } else { "false" }
+        println("{\"hexa_time\":\"" + VERSION + "\",\"subcmd\":\"horology\",\"pass\":" + pass + ",\"status\":\"spec\"}")
+    }
+    _audit("horology", "", 0)
+}
+
+fn cmd_clockwork(a: [str]) {
+    _verb_head("clockwork", SPEC_CLOCKWORK)
+    if json_mode(a) {
+        let pass = if _file_exists(SPEC_CLOCKWORK) { "true" } else { "false" }
+        println("{\"hexa_time\":\"" + VERSION + "\",\"subcmd\":\"clockwork\",\"pass\":" + pass + ",\"status\":\"spec\"}")
+    }
+    _audit("clockwork", "", 0)
+}
+
+fn cmd_calendar(a: [str]) {
+    _verb_head("calendar", SPEC_CALENDAR)
+    if json_mode(a) {
+        let pass = if _file_exists(SPEC_CALENDAR) { "true" } else { "false" }
+        println("{\"hexa_time\":\"" + VERSION + "\",\"subcmd\":\"calendar\",\"pass\":" + pass + ",\"status\":\"spec\"}")
+    }
+    _audit("calendar", "", 0)
+}
+
+// ─── subcommand: selftest ───
+
+fn cmd_selftest(a: [str]) {
+    let h = _file_exists(SPEC_HOROLOGY)
+    let c = _file_exists(SPEC_CLOCKWORK)
+    let k = _file_exists(SPEC_CALENDAR)
+    let pass_overall = h && c && k
+
+    println("hexa-time selftest — 3-verb spec sentinel sweep")
+    println("")
+    println("  horology   spec: " + (if h { "PRESENT" } else { "MISSING" }))
+    println("  clockwork  spec: " + (if c { "PRESENT" } else { "MISSING" }))
+    println("  calendar   spec: " + (if k { "PRESENT" } else { "MISSING" }))
+    println("")
+    if pass_overall {
+        println("__HEXA_TIME_SELFTEST__ PASS")
+    } else {
+        println("__HEXA_TIME_SELFTEST__ FAIL")
+    }
+
+    if json_mode(a) {
+        println("{\"hexa_time\":\"" + VERSION + "\",\"subcmd\":\"selftest\",\"verdict\":\"" + (if pass_overall { "PASS" } else { "FAIL" }) + "\"}")
+    }
+    _print_caveats()
+    _audit("selftest", "", if pass_overall { 0 } else { 1 })
+    if pass_overall == false { exit(1) }
+}
+
+// ─── version ───
+
+fn cmd_version() {
+    println("hexa-time " + VERSION)
+    println("standalone n=6 time substrate (HEXA family — extracted from n6-architecture@c0f1f570 on 2026-05-06)")
+    println("license: MIT")
+    println("repo:    https://github.com/need-singularity/hexa-time")
+}
+
+// ─── help ───
+
+fn cmd_help() {
+    println("hexa-time " + VERSION + " — standalone n=6 time substrate CLI")
+    println("")
+    println("usage: hexa-time <subcmd> [flags...]")
+    println("")
+    println("verb subcommands (HEXA family — n=6 invariant lattice):")
+    println("  horology       escapement / oscillator phase canonics (τ=4)  [SPEC]")
+    println("  clockwork      bell ratio / harmonic canonics                [SPEC]")
+    println("  calendar       calendar 6-cycle / time-geography             [SPEC]")
+    println("")
+    println("utility subcommands:")
+    println("  status         3-verb spec table + verdict + caveats")
+    println("  selftest       3-verb spec sentinel sweep")
+    println("")
+    println("global flags:")
+    println("  --version      show version")
+    println("  --json         machine-parseable JSON tail")
+    println("  --help, -h     this help")
+    println("")
+    println("env:")
+    println("  HEXA_TIME_ROOT     override repo root (default: inferred from $0)")
+    println("")
+    println("cost estimate (Mac local): $0 — spec read + sentinel print only.")
+    println("                            full simulators TBD post-v1.0.")
+    println("")
+    println("backend specs: " + HT)
+}
+
+// ─── main ───
+
+fn main() {
+    let _raw = args()
+    let mut _sidx = -1
+    let mut _i = 0
+    while _i < _raw.len() {
+        if _raw[_i].ends_with(".hexa") { _sidx = _i; break }
+        _i = _i + 1
+    }
+    let mut _user_start = 2
+    if _sidx >= 0 { _user_start = _sidx + 1 }
+
+    let mut a: [str] = ["hexa_time_cli", "hexa_time_router"]
+    let mut _ua = _user_start
+    while _ua < _raw.len() {
+        a = a + [_raw[_ua]]
+        _ua = _ua + 1
+    }
+    let n = len(a)
+
+    if n < 3 {
+        cmd_help()
+        return
+    }
+
+    let sub = a[2]
+
+    if sub == "--version" || sub == "-V" || sub == "version" {
+        cmd_version()
+        return
+    }
+
+    if has_flag(a, "--help") || has_flag(a, "-h") {
+        cmd_help()
+        return
+    }
+
+    if sub == "help" { cmd_help(); return }
+
+    if sub == "status" {
+        cmd_status(a)
+    } else if sub == "horology" {
+        cmd_horology(a)
+    } else if sub == "clockwork" {
+        cmd_clockwork(a)
+    } else if sub == "calendar" {
+        cmd_calendar(a)
+    } else if sub == "selftest" {
+        cmd_selftest(a)
+    } else {
+        eprintln("hexa-time: unknown subcommand '" + sub + "'")
+        eprintln("run 'hexa-time help' for usage")
+        _audit(sub, "", 2)
+        exit(2)
+    }
+}

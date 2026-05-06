@@ -1,0 +1,20 @@
+#!hexa strict
+// tests/test_selftest.hexa — full 3-verb selftest harness
+//
+// Pass criterion: __HEXA_TIME_SELFTEST__ PASS sentinel present.
+// Cost: $0 (orchestrates spec-presence checks for all 3 verbs).
+
+fn main() {
+    let root = env("HEXA_TIME_ROOT")
+    let mut p = "cli/hexa-time.hexa"
+    if root.len() > 0 { p = root + "/cli/hexa-time.hexa" }
+
+    let raw = exec("hexa run " + p + " selftest 2>&1")
+    if raw.contains("__HEXA_TIME_SELFTEST__ PASS") {
+        println("test_selftest: PASS")
+        return
+    }
+    println("test_selftest: FAIL")
+    println(raw.trim())
+    exit(1)
+}

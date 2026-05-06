@@ -1,0 +1,75 @@
+# hexa.toml — hexa-time standalone package manifest
+#
+# Spec: shared/hexa-lang/hexa-toml-spec.json (version 1.0.0)
+# Distribution target: hx install hexa-time
+# Provenance: extracted from n6-architecture@c0f1f570 on 2026-05-06
+#   - horology/    ← domains/culture/horology/
+#   - clockwork/   ← domains/culture/bell-clockwork/
+#   - calendar/    ← domains/infra/calendar-time-geography/
+
+[package]
+name = "hexa-time"
+version = "1.0.0"
+entry = "cli/hexa-time.hexa"
+description = "n=6 time substrate (HEXA family): horology + bell-clockwork + calendar-time-geography. 3-verb spec-first integration of escapement (τ=4 phase), bell-ratio canonics, and calendar 6-cycle geometry."
+license = "MIT"
+authors = ["박민우 <nerve011235@gmail.com>"]
+repository = "https://github.com/need-singularity/hexa-time"
+homepage = "https://github.com/need-singularity/hexa-time"
+readme = "README.md"
+keywords = ["time-substrate", "hexa-family", "horology", "bell-clockwork", "calendar", "n6-invariant"]
+categories = ["time-geography", "horology", "calendar-systems"]
+
+[[bin]]
+name = "hexa-time"
+path = "cli/hexa-time.hexa"
+
+[test]
+runner = "hexa"
+files = [
+    "tests/test_selftest.hexa",
+]
+
+# ── hx install hook ───────────────────────────────────────
+# install.hexa runs under hx package manager (hexa-lang) at install time.
+# Phases: pre   → no python deps required (pure-hexa spec).
+#         post  → quick selftest (warn-only, not a blocker).
+[scripts]
+install = "install.hexa"
+
+# ── Modules manifest (3 verbs, spec-first) ────────────────
+# All 3 verbs ship as spec-only documents in v1.0.0 (working .hexa CLI TBD).
+# horology  — escapement / oscillator phase canonics (τ(6)=4)
+# clockwork — bell ratio / harmonic canonics
+# calendar  — calendar 6-cycle / time-geography integration
+[modules]
+specs = [
+    "horology/horology.md",
+    "clockwork/bell-clockwork.md",
+    "calendar/calendar-time-geography.md",
+]
+
+# ── Dependencies ──────────────────────────────────────────
+# hexa stdlib only; no python aux required.
+[dependencies]
+hexa-lang = ">=1.0.0"
+
+# ── Closure provenance (raw#10 honest C3) ─────────────────
+# v1.0.0 closure: 0/3 verbs wired (spec-first); 3/3 specs imported verbatim.
+# Honest scope: this is a spec substrate — empirical sandboxes deferred.
+[closure]
+verbs_total = 3
+verbs_wired = 0
+verbs_spec = 3
+verdict = "SPEC_FIRST"
+extracted_from = "n6-architecture@c0f1f570 on 2026-05-06"
+
+# ── Scope honesty (raw#10 C3) ─────────────────────────────
+[scope]
+honest_scope = "3-verb time substrate. spec-first (working .hexa CLI TBD). escapement(τ=4 phase) + bell ratio + calendar 6-cycle integration."
+not_scope = ["atomic-clock calibration", "GPS/NTP sync infrastructure", "circadian biology (separate sister axis)", "cosmological time"]
+n6_lattice_caveat = "n=6 invariant (σ(6)=12, τ(6)=4, φ(6)=2, J₂=24) inherited from n6-architecture; verified at substrate level only — verb-specific empirical audits deferred."
+
+# ── Cost profile ──────────────────────────────────────────
+[cost]
+mac_local_default = "$0 (pure spec read; CLI placeholder echoes status)"
