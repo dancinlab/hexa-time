@@ -2,7 +2,7 @@
 
 > 3-verb time substrate organized around the **n=6 invariant lattice**:
 > HOROLOGY / CLOCKWORK / CALENDAR. Spec-first extraction from
-> `n6-architecture` (commit `c0f1f570`) integrating escapement (τ=4 phase)
+> `canon` (commit `c0f1f570`) integrating escapement (τ=4 phase)
 > canonics, bell-ratio harmonic canonics, and calendar 6-cycle / time-
 > geography. Working `.hexa` simulators are TBD post-v1.0.
 
@@ -41,7 +41,7 @@ single n=6 invariant.
 | calendar    | SPEC v1.0.0    | 6-cycle geometry         | `calendar/calendar-time-geography.md`      |
 
 Verdict: **SPEC_FIRST** (0/3 verbs empirically wired; 3/3 specs imported
-verbatim from `n6-architecture`).
+verbatim from `canon`).
 
 ## Status
 
@@ -53,7 +53,7 @@ escapement (τ=4 phase) + bell ratio + calendar 6-cycle integration.
   printers; full empirical simulators (escapement ODE, bell-ratio audit,
   calendar generator) are deferred to post-v1.0 cycles.
 - n=6 invariant lattice (`σ(6)=12, τ(6)=4, φ(6)=2, J₂(6)=24`) is **inherited**
-  from `n6-architecture@c0f1f570`. Verb-specific empirical audits within
+  from `canon@c0f1f570`. Verb-specific empirical audits within
   `hexa-time` itself are deferred.
 - No cross-link dependencies. This repo is **self-sufficient** — runs from
   any checkout root with `HEXA_TIME_ROOT` set or auto-inferred.
@@ -87,5 +87,5 @@ MIT — see [LICENSE](LICENSE).
 ---
 
 **Provenance**: extracted from
-[`n6-architecture`](https://github.com/need-singularity/n6-architecture)
+[`canon`](https://github.com/need-singularity/canon)
 @ commit `c0f1f570` on 2026-05-06.

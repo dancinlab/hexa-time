@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/culture/bell-clockwork/bell-clockwork.md -->
+<!-- @canonical: canon@d1640e62:domains/culture/bell-clockwork/bell-clockwork.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 3e2b5774e4700dbf9591d81393913d6e -->
 <!-- gold-standard: shared/harness/sample.md -->

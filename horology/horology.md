@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/culture/horology/horology.md -->
+<!-- @canonical: canon@d1640e62:domains/culture/horology/horology.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: beb5d5f62977653c28e5ea6dd2767d6a -->
 <!-- gold-standard: shared/harness/sample.md -->

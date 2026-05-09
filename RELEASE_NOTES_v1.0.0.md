@@ -2,7 +2,7 @@
 
 **Release date**: 2026-05-06
 **License**: MIT
-**Provenance**: extracted from `n6-architecture@c0f1f570`
+**Provenance**: extracted from `canon@c0f1f570`
 
 ## Overview
 
@@ -20,9 +20,9 @@ The n=6 invariant lattice composes measurement (horology) + transmission
 
 | Path                                     | Provenance                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------ |
-| `horology/horology.md`                   | `n6-architecture/domains/culture/horology/horology.md`             |
-| `clockwork/bell-clockwork.md`            | `n6-architecture/domains/culture/bell-clockwork/bell-clockwork.md` |
-| `calendar/calendar-time-geography.md`    | `n6-architecture/domains/infra/calendar-time-geography/...`        |
+| `horology/horology.md`                   | `canon/domains/culture/horology/horology.md`             |
+| `clockwork/bell-clockwork.md`            | `canon/domains/culture/bell-clockwork/bell-clockwork.md` |
+| `calendar/calendar-time-geography.md`    | `canon/domains/infra/calendar-time-geography/...`        |
 | `cli/hexa-time.hexa`                     | NEW placeholder router (sister-of-pattern: `hexa-bio/cli/`)        |
 | `install.hexa`                           | NEW (sister-of-pattern: `hexa-bio/install.hexa`)                   |
 | `hexa.toml`                              | NEW (name=hexa-time, license=MIT, 3 specs)                         |
@@ -35,7 +35,7 @@ The n=6 invariant lattice composes measurement (horology) + transmission
 - **0/3 verbs empirically wired**. v1.0.0 ships spec documents only.
 - Working `.hexa` simulators (escapement ODE, bell-ratio audit, calendar
   generator) are TBD post-v1.0.
-- n=6 invariant lattice is **inherited** from `n6-architecture@c0f1f570`;
+- n=6 invariant lattice is **inherited** from `canon@c0f1f570`;
   verb-specific empirical audits within `hexa-time` are deferred.
 - Spec content is **verbatim** extraction (no normative changes applied
   during extraction).

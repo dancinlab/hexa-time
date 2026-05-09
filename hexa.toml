@@ -2,7 +2,7 @@
 #
 # Spec: shared/hexa-lang/hexa-toml-spec.json (version 1.0.0)
 # Distribution target: hx install hexa-time
-# Provenance: extracted from n6-architecture@c0f1f570 on 2026-05-06
+# Provenance: extracted from canon@c0f1f570 on 2026-05-06
 #   - horology/    ← domains/culture/horology/
 #   - clockwork/   ← domains/culture/bell-clockwork/
 #   - calendar/    ← domains/infra/calendar-time-geography/
@@ -62,13 +62,13 @@ verbs_total = 3
 verbs_wired = 0
 verbs_spec = 3
 verdict = "SPEC_FIRST"
-extracted_from = "n6-architecture@c0f1f570 on 2026-05-06"
+extracted_from = "canon@c0f1f570 on 2026-05-06"
 
 # ── Scope honesty (raw#10 C3) ─────────────────────────────
 [scope]
 honest_scope = "3-verb time substrate. spec-first (working .hexa CLI TBD). escapement(τ=4 phase) + bell ratio + calendar 6-cycle integration."
 not_scope = ["atomic-clock calibration", "GPS/NTP sync infrastructure", "circadian biology (separate sister axis)", "cosmological time"]
-n6_lattice_caveat = "n=6 invariant (σ(6)=12, τ(6)=4, φ(6)=2, J₂=24) inherited from n6-architecture; verified at substrate level only — verb-specific empirical audits deferred."
+n6_lattice_caveat = "n=6 invariant (σ(6)=12, τ(6)=4, φ(6)=2, J₂=24) inherited from canon; verified at substrate level only — verb-specific empirical audits deferred."
 
 # ── Cost profile ──────────────────────────────────────────
 [cost]

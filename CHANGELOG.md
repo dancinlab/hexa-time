@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] — 2026-05-06
 
 ### Added
-- Initial standalone extraction from `n6-architecture@c0f1f570`.
+- Initial standalone extraction from `canon@c0f1f570`.
 - 3 verb spec documents (verbatim copy):
   - `horology/horology.md` ← `domains/culture/horology/horology.md`
   - `clockwork/bell-clockwork.md` ← `domains/culture/bell-clockwork/bell-clockwork.md`
@@ -27,4 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   generator) deferred to post-v1.0 cycles.
 
 ### Provenance
-- `extracted_from = "n6-architecture@c0f1f570 on 2026-05-06"`
+- `extracted_from = "canon@c0f1f570 on 2026-05-06"`
