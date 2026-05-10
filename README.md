@@ -6,6 +6,7 @@
 > canonics, bell-ratio harmonic canonics, and calendar 6-cycle / time-
 > geography. Working `.hexa` simulators are TBD post-v1.0.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20102626.svg)](https://doi.org/10.5281/zenodo.20102626)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)](CHANGELOG.md)
 [![Verbs: 0/3 wired (spec-first)](https://img.shields.io/badge/verbs-0%2F3_wired_(spec--first)-orange.svg)](#verbs)
