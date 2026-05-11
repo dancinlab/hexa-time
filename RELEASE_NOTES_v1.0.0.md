@@ -43,7 +43,7 @@ The n=6 invariant lattice composes measurement (horology) + transmission
 ## Quickstart
 
 ```bash
-git clone https://github.com/need-singularity/hexa-time.git ~/.hexa-time
+git clone https://github.com/dancinlab/hexa-time.git ~/.hexa-time
 export HEXA_TIME_ROOT=~/.hexa-time
 hexa run $HEXA_TIME_ROOT/cli/hexa-time.hexa status
 hexa run $HEXA_TIME_ROOT/cli/hexa-time.hexa selftest

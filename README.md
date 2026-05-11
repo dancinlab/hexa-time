@@ -71,7 +71,7 @@ hexa-time --version           # → 1.0.0
 ### Via git clone (works today)
 
 ```bash
-git clone https://github.com/need-singularity/hexa-time.git ~/.hexa-time
+git clone https://github.com/dancinlab/hexa-time.git ~/.hexa-time
 export HEXA_TIME_ROOT=~/.hexa-time
 export PATH="$HEXA_TIME_ROOT/cli:$PATH"
 
@@ -88,5 +88,5 @@ MIT — see [LICENSE](LICENSE).
 ---
 
 **Provenance**: extracted from
-[`canon`](https://github.com/need-singularity/canon)
+[`canon`](https://github.com/dancinlab/canon)
 @ commit `c0f1f570` on 2026-05-06.

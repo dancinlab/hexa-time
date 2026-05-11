@@ -210,7 +210,7 @@ fn cmd_version() {
     println("hexa-time " + VERSION)
     println("standalone n=6 time substrate (HEXA family — extracted from canon@c0f1f570 on 2026-05-06)")
     println("license: MIT")
-    println("repo:    https://github.com/need-singularity/hexa-time")
+    println("repo:    https://github.com/dancinlab/hexa-time")
 }
 
 // ─── help ───

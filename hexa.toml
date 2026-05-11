@@ -14,8 +14,8 @@ entry = "cli/hexa-time.hexa"
 description = "n=6 time substrate (HEXA family): horology + bell-clockwork + calendar-time-geography. 3-verb spec-first integration of escapement (τ=4 phase), bell-ratio canonics, and calendar 6-cycle geometry."
 license = "MIT"
 authors = ["박민우 <nerve011235@gmail.com>"]
-repository = "https://github.com/need-singularity/hexa-time"
-homepage = "https://github.com/need-singularity/hexa-time"
+repository = "https://github.com/dancinlab/hexa-time"
+homepage = "https://github.com/dancinlab/hexa-time"
 readme = "README.md"
 keywords = ["time-substrate", "hexa-family", "horology", "bell-clockwork", "calendar", "n6-invariant"]
 categories = ["time-geography", "horology", "calendar-systems"]
