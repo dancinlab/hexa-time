@@ -61,24 +61,24 @@ escapement (τ=4 phase) + bell ratio + calendar 6-cycle integration.
 
 ## Install
 
-### Via `hx` (when registered)
-
 ```bash
+# 1. Install hexa-lang (ships `hexa` + `hx` package manager)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
+
+# 2. Install hexa-time
 hx install hexa-time          # global, pulls latest from registry
-hexa-time --version           # → 1.0.0
 ```
 
-### Via git clone (works today)
+## Run
 
 ```bash
-git clone https://github.com/dancinlab/hexa-time.git ~/.hexa-time
-export HEXA_TIME_ROOT=~/.hexa-time
-export PATH="$HEXA_TIME_ROOT/cli:$PATH"
-
-# Run any subcommand:
-hexa run $HEXA_TIME_ROOT/cli/hexa-time.hexa selftest
-hexa run $HEXA_TIME_ROOT/cli/hexa-time.hexa status
-hexa run $HEXA_TIME_ROOT/cli/hexa-time.hexa horology
+hexa-time horology            # escapement / oscillator phase canonics (τ=4)  [SPEC]
+hexa-time clockwork           # bell ratio / harmonic canonics                [SPEC]
+hexa-time calendar            # calendar 6-cycle / time-geography             [SPEC]
+hexa-time status              # 3-verb spec table + verdict + caveats
+hexa-time selftest            # 3-verb spec sentinel sweep
+hexa-time --version           # show version
+hexa-time --help              # full usage
 ```
 
 ## License
