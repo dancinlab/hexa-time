@@ -33,17 +33,6 @@ Together these three verbs form one **time substrate** where measurement
 (horology), transmission (clockwork), and indexing (calendar) compose under a
 single n=6 invariant.
 
-## Verbs
-
-| Verb        | Status         | n=6 lattice              | Spec file                                  |
-| ----------- | -------------- | ------------------------ | ------------------------------------------ |
-| horology    | SPEC v1.0.0    | τ(6)=4 phase             | `horology/horology.md`                     |
-| clockwork   | SPEC v1.0.0    | bell ratio canonics      | `clockwork/bell-clockwork.md`              |
-| calendar    | SPEC v1.0.0    | 6-cycle geometry         | `calendar/calendar-time-geography.md`      |
-
-Verdict: **SPEC_FIRST** (0/3 verbs empirically wired; 3/3 specs imported
-verbatim from `canon`).
-
 ## Status
 
 3-verb 시간 substrate. **spec-first** (working `.hexa` CLI TBD).
