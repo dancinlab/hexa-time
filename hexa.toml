@@ -57,12 +57,27 @@ hexa-lang = ">=1.0.0"
 # ── Closure provenance (raw#10 honest C3) ─────────────────
 # v1.0.0 closure: 0/3 verbs wired (spec-first); 3/3 specs imported verbatim.
 # Honest scope: this is a spec substrate — empirical sandboxes deferred.
+# Spec-first closure attested by verify/run_all.hexa (4 SPEC_FIRST scripts):
+#   - spec_presence       (3/3 verb spec docs on disk)
+#   - lattice_arithmetic  (n=6 self-consistency, aux only per LATTICE_POLICY §1.3)
+#   - real_limits_anchor  (LIMIT_BREAKTHROUGH.md anchors NIST/BIPM/IERS/IAU)
+#   - closure_consistency (scoreboard cross-check CLI · toml · README · AGENTS)
 [closure]
 verbs_total = 3
 verbs_wired = 0
 verbs_spec = 3
 verdict = "SPEC_FIRST"
 extracted_from = "canon@c0f1f570 on 2026-05-06"
+verify_entrypoint = "verify/run_all.hexa"
+verify_scripts = [
+    "verify/spec_presence.hexa",
+    "verify/lattice_arithmetic.hexa",
+    "verify/real_limits_anchor.hexa",
+    "verify/closure_consistency.hexa",
+]
+spec_first_closure = "3/3"   # 3 verb spec docs present, attested by verify sweep
+policy = "LATTICE_POLICY.md §1.3 — real-limits-first; lattice as aux only"
+real_limits_audit = "LIMIT_BREAKTHROUGH.md (L1–L7: c · Cs/optical clock · Heisenberg · SR/GR · leap-second · tropical year · Shannon)"
 
 # ── Scope honesty (raw#10 C3) ─────────────────────────────
 [scope]

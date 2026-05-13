@@ -1,0 +1,8 @@
+# runtime artifacts
+state/
+*.log
+
+# editor
+.DS_Store
+*.swp
+*~
