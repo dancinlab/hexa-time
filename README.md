@@ -1,21 +1,30 @@
-# ⏰ hexa-time — n=6 time substrate (HEXA family)
+<p align="center">
+  <img src="docs/logo.svg" width="140" alt="hexa-time">
+</p>
+
+<h1 align="center">⏰ hexa-time</h1>
+
+<p align="center"><strong>HEXA-Time</strong> — n=6 time substrate · horology · clockwork · calendar · escapement (τ=4) · bell ratio · 6-cycle</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <a href="https://doi.org/10.5281/zenodo.20102626"><img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.20102626.svg"></a>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-success">
+  <img alt="Verbs" src="https://img.shields.io/badge/verbs-3-informational">
+  <img alt="Closure" src="https://img.shields.io/badge/closure-SPEC__FIRST_3%2F3-brightgreen">
+  <img alt="Lattice" src="https://img.shields.io/badge/n%3D6-σ%3D12%20·%20τ%3D4%20·%20φ%3D2%20·%20J₂%3D24-informational">
+  <img alt="Family" src="https://img.shields.io/badge/family-HEXA--Time-blueviolet">
+</p>
+
+<p align="center">temporal · escapement · oscillator · gear-train · campanology · calendar · 6-cycle · spec-first · MIT</p>
+
+---
 
 > 3-verb time substrate organized around the **n=6 invariant lattice**:
 > HOROLOGY / CLOCKWORK / CALENDAR. Spec-first extraction from
 > `canon` (commit `c0f1f570`) integrating escapement (τ=4 phase)
 > canonics, bell-ratio harmonic canonics, and calendar 6-cycle / time-
 > geography. Working `.hexa` simulators are TBD post-v1.0.
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20102626.svg)](https://doi.org/10.5281/zenodo.20102626)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)](CHANGELOG.md)
-[![Verbs: 0/3 wired (spec-first)](https://img.shields.io/badge/verbs-0%2F3_wired_(spec--first)-orange.svg)](#verbs)
-[![Closure: SPEC_FIRST 3/3](https://img.shields.io/badge/closure-SPEC__FIRST_3%2F3-brightgreen.svg)](#verify)
-[![n=6 lattice](https://img.shields.io/badge/n%3D6-σ%3D12_τ%3D4_φ%3D2_J₂%3D24-purple.svg)](#why)
-[![Policy: LATTICE_POLICY](https://img.shields.io/badge/policy-LATTICE__POLICY-blue.svg)](LATTICE_POLICY.md)
-[![Limits: real-physics first](https://img.shields.io/badge/limits-real--physics_first-informational.svg)](LIMIT_BREAKTHROUGH.md)
-
----
 
 ## Why
 
@@ -53,7 +62,7 @@ escapement (τ=4 phase) + bell ratio + calendar 6-cycle integration.
 
 ## Install
 
-```bash
+```sh
 # 1. Install hexa-lang (gives you `hexa` + `hx` package manager)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
 
@@ -63,7 +72,7 @@ hx install hexa-time
 
 ## Run
 
-```bash
+```sh
 hexa-time horology            # escapement / oscillator phase canonics (τ=4)  [SPEC]
 hexa-time clockwork           # bell ratio / harmonic canonics                [SPEC]
 hexa-time calendar            # calendar 6-cycle / time-geography             [SPEC]
@@ -78,18 +87,16 @@ hexa-time --help              # full usage
 Spec-first closure (3/3) is attested by four `.hexa` verify scripts under
 [`verify/`](verify/). Run the aggregate sweep:
 
-```bash
+```sh
 hexa run verify/run_all.hexa     # exit 0 = all 4 scripts PASS
 ```
 
 | # | Script | What it checks |
-|---|--------|----------------|
+|---|---|---|
 | 1 | `verify/spec_presence.hexa`       | 3/3 verb spec docs (horology · clockwork · calendar) present at declared paths |
 | 2 | `verify/lattice_arithmetic.hexa`  | n=6 self-consistency (σ·φ = n·τ = J₂ = 24; 1/2 + 1/3 + 1/6 = 1) — **aux only**, per [`LATTICE_POLICY.md`](LATTICE_POLICY.md) §1.3 |
 | 3 | `verify/real_limits_anchor.hexa`  | [`LIMIT_BREAKTHROUGH.md`](LIMIT_BREAKTHROUGH.md) anchors L1–L7 (c, atomic-clock stability, Heisenberg, SR/GR, leap-second, tropical year, Shannon) + NIST/BIPM/IERS/IAU sourcing |
 | 4 | `verify/closure_consistency.hexa` | scoreboard cross-check (CLI SPEC_* decls = `hexa.toml` `verbs_total` = README badge = 3); standard artifacts present |
-
-**Honesty obligations** (raw#10 C3 + [`LATTICE_POLICY.md`](LATTICE_POLICY.md) §3.3):
 
 - NIST (NIST-F2 caesium ~1e-16), BIPM (TAI/UTC), USNO, NPL, PTB, IERS use
   **their own definitions** (SI second via Cs-133 hyperfine, optical-lattice
@@ -107,9 +114,41 @@ hexa run verify/run_all.hexa     # exit 0 = all 4 scripts PASS
   (Roman / Babylonian inheritance), NOT a physics derivation from n=6.
   Tropical year 365.2422 d (IAU 2015) is the actual physical anchor.
 
+## Repo layout
+
+```
+hexa-time/
+├── README.md                          ← this file (public landing, 18-block format)
+├── LICENSE                            ← MIT
+├── AGENTS.tape                        ← governance + identity (.tape v1.2)
+├── CLAUDE.md                          ← symlink → AGENTS.tape
+├── CHANGELOG.md                       ← release notes per version
+├── RELEASE_NOTES_v1.0.0.md            ← v1.0.0 release surface
+├── CITATION.cff                       ← citation metadata
+├── hexa.toml                          ← repo metadata (verbs_total, version)
+├── install.hexa                       ← hx install entry point
+├── BELL-CLOCKWORK.md                  ← clockwork verb deep-dive
+├── HOROLOGY.md                        ← horology verb deep-dive
+├── LATTICE_POLICY.md                  ← project-local lattice-as-tool standard
+├── LIMIT_BREAKTHROUGH.md              ← L1–L7 real-physics anchors
+├── IMPORTED_FROM_CANON.md             ← extraction provenance
+├── TAPE-AUDIT.md                      ← .tape adoption audit ledger
+├── cli/
+│   └── hexa-time.hexa                 ← CLI dispatcher (spec-first placeholder)
+├── horology/                          ← escapement / oscillator spec
+├── clockwork/                         ← bell-ratio / gear-train spec
+├── calendar/                          ← 6-cycle / time-geography spec
+├── verify/                            ← 4 hexa verify scripts (run_all.hexa aggregator)
+├── tests/                             ← regression scaffold
+├── papers/                            ← supporting papers
+├── state/                             ← runtime markers (gitignored)
+└── docs/
+    └── logo.svg                       ← README header glyph
+```
+
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[MIT](LICENSE) — see LICENSE file.
 
 ---
 
