@@ -46,7 +46,7 @@
 @I id001 := "hexa-time" :: identity-claim [d=2026-05-14 active]
   kind = "HEXA-Time family — temporal systems"
   brief = "HEXA-Time family · temporal systems"
-  parent = "dancinlab/echoes"
+  parent = "dancinlab"
 
 @L l1 := "repo-layout" :: structure [active]
   .roadmap.hexa_time -> "file"
