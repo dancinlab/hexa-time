@@ -30,7 +30,6 @@ The n=6 invariant lattice composes measurement (horology) + transmission
 | `LICENSE`                                | NEW (MIT)                                                          |
 | `CHANGELOG.md`                           | NEW                                                                |
 
-## Honest scope (raw#10 C3)
 
 - **0/3 verbs empirically wired**. v1.0.0 ships spec documents only.
 - Working `.hexa` simulators (escapement ODE, bell-ratio audit, calendar

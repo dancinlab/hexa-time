@@ -75,7 +75,6 @@ limits, per LATTICE_POLICY §1.3.)
    (wider UT1 tolerance) data avoids the kind of date-arithmetic bugs
    that cost real systems. Risk: zero (analysis-only).
 
-## §5 Honest caveats (raw#10 C3)
 
 - The speed of light (L1) and Heisenberg uncertainty (L3) are the two
   HARDEST walls in this entire repo bundle. No verb output can pass

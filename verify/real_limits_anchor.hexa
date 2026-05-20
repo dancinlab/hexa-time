@@ -107,7 +107,6 @@ fn main() {
     }
 
     // 3. Honesty caveats: lattice-fit + n=6 cultural origin + FTL/CTC unproven.
-    //    Per raw#10 C3 + LATTICE_POLICY §3.3.
     let caveats = [
         ["n=6 calendar is cultural, NOT physics-derived", "cultural"],
         ["No FTL sync claim allowed (c is HARD)",         "FTL"],

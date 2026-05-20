@@ -19,9 +19,6 @@
 // Root resolution: $HEXA_TIME_ROOT env, else inferred from $0 dirname.
 //
 // Constraints:
-//   raw#9   — hexa-only orchestration
-//   raw#15  — write-confined (audit log only)
-//   raw#10  — honest C3 caveats embedded
 //
 // Cost: $0 (Mac local; spec read + sentinel print).
 //
@@ -88,11 +85,9 @@ fn _file_exists(p: str) -> bool {
     return r == "yes"
 }
 
-// ─── caveat printer (raw#10 honest C3) ───
 
 fn _print_caveats() {
     println("")
-    println("--- caveats (raw#10 C3) ---")
     println("  1. 0/3 verbs empirically wired. v1.0.0 ships SPEC documents only;")
     println("     working .hexa simulators (escapement / bell-ratio / calendar")
     println("     generator) are TBD post-v1.0.")

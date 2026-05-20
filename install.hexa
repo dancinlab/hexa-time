@@ -10,14 +10,11 @@
 //
 // Mirrors hexa-bio/install.hexa pattern (commit 2026-05-04).
 //
-// Responsibilities (each idempotent, raw#9 STRICT — no .py creation):
 //   1. Pre-install: nothing (no python deps; pure-hexa spec substrate).
 //   2. Post-install: run `hexa-time selftest` via the freshly-staged
 //      cli/hexa-time.hexa. Selftest = sentinel sweep (3 verb specs present);
 //      non-PASS = warn-only (not a blocker — spec substrate).
 //
-// raw#9 hexa-only, raw#11 snake_case, raw#15 no-hardcode.
-// raw#10 honest C3: see hexa-time/README.md "Status" section.
 
 fn run_quick_selftest(root: str) -> bool {
     let cli = root + "/cli/hexa-time.hexa"
